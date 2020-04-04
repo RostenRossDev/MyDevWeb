@@ -1,4 +1,4 @@
-package com.rostenrossdev.RostenRossDev;
+package com.rostenrossdev.rostenrossdev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
