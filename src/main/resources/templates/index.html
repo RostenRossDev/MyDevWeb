@@ -5,8 +5,11 @@
 </head>
 <body>
     <header th:replace="layout/layout :: header"></header>
+    
+        <div class="alert alert-danger" th:if="${posts != null}" th:text="${posts}" >
+        </div>
 
-    <div class="container">
+    <!--<div class="container">
         <p> Mi nombre es Néstor Matías Costantini, soy Desarrollador Web auto didacta, actualmente estudiante 
         en la Universidad Tecnologica Nacional "UTN"  de la carrera Tecnicatura Universitaria en 
         Programacion "TUP" y tambien Profesor de Química del nivel secundario.</p>
@@ -21,7 +24,7 @@
         en disco para instalar las apps para el desarrollo asi que me las ingenie para desarrollar usando una IDE
         online la cual es <a href="gitpod.io">gitpod.io</a>, una base de datos MySQL remota gratuita para probar los poryectos
         la cual es <a href="remotemysql.com">remotemysql.com</a></p>
-    </div>
+    </div>-->
     
 
     <footer th:replace="layout/layout :: footer"></footer>
