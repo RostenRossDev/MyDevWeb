@@ -24,6 +24,10 @@
 			    </ul>
 
                 <ul class="navbar-nav navbar-right ml-auto">
+
+                    <li class="nav-item">
+					    <a class="nav-link btn btn-outline-primary" th:href="@{/nuevoPost}">Nuevo Post</a>
+				    </li>
                     
                     <li sec:authorize="!isAuthenticated()"><a class="nav-link btn btn-outline-success" th:href="@{/login}">Sig
 							In</a></li>
