@@ -37,6 +37,9 @@ public class Post implements Serializable {
     private String url;
 
     @NotEmpty
+    private String descripcion;
+
+    @NotEmpty
     private String img;
 
     @NotNull
@@ -92,6 +95,14 @@ public class Post implements Serializable {
 
      public void prePersist() {
         this.fecha= new Date();
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
     
