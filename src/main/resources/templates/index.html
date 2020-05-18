@@ -8,15 +8,15 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 
-	<div class="alert alert-danger" th:if="${posts != null}" th:text="${posts}">
-	</div>
+	<div class="alert alert-danger" th:if="${posts != null}" th:text="${posts}"></div>
 
 	<div class="container py-4">
-		<div class="card" style="width: 18rem;"  th:each="post: ${posts}">
-            <img th:if="${#strings.length(post.foto)>0}" class="img-thumbnail rounded card-img-top" style="max-width: 25%;" th:src="@{'/uploads/'+${post.foto}}" th:alt="${post.foto}"/>
+		<div class="card" style="width: 18rem;"  th:each="post: ${postLista}">
+            <img th:if="${#strings.length(post.foto)>0}"  th:src="@{'/uploads/'+${post.foto}}" 
+            th:alt="${post.foto}" class="img-thumbnail rounded card-img-top" style="max-width: 25%;"/>
 			<div class="card-body">
 				<h5 class="card-title" th:text="${post.nombre}"></h5>
-				<p class="card-text" th:text="${post.desripcion}"></p>
+				<p class="card-text" th:text="${post.descripcion}"></p>
 				<p class="card-text" th:text="'Github: '+${post.github}"></p>
 				<a href="#" class="btn btn-primary" th:text="${post.url}"></a>
 			</div>
