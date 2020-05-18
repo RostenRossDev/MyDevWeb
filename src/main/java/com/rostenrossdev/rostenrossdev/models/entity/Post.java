@@ -40,7 +40,7 @@ public class Post implements Serializable {
     private String descripcion;
 
     @NotEmpty
-    private String img;
+    private String foto;
 
     @NotNull
     @Column(name = "create_at")
@@ -48,13 +48,6 @@ public class Post implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date fecha;
     
-
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
     public String getGithub() {
         return github;
@@ -72,14 +65,6 @@ public class Post implements Serializable {
         this.url = url;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    
-    public void setImg(String img) {
-        this.img = img;
-    }
 
     public Date getFecha() {
         return fecha;
@@ -103,6 +88,22 @@ public class Post implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     

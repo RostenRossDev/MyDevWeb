@@ -69,10 +69,9 @@ public class IndexController{
             model.addAttribute("titulo", "Formulario del Post");
             return "form_post";
         }
-
          if (!foto.isEmpty()) {
-            if (post.getId() != null && post.getImg() != null && post.getImg().length()>0) {
-               uploadFileService.delete(post.getImg());
+            if (post.getId() != null && post.getFoto() != null && post.getFoto().length()>0) {
+               uploadFileService.delete(post.getFoto());
                 
             }
             String uniqueFileName =null;
@@ -83,13 +82,15 @@ public class IndexController{
             }
             flash.addFlashAttribute("info", "Has subido correctamente '"+uniqueFileName+"'!!");
 
-            post.setImg(uniqueFileName);
+            post.setFoto(uniqueFileName);
         }
-        String mensajeFlash=(post.getId() != null)? "Post editado con éxito!!" : "Post creado con éxito!!";
+
+        String mensajeFlash=(post.getId() != null)? "Cliente editado con éxito!!" : "Cliente creado con éxito!!";
         postService.save(post);
         status.setComplete();
         flash.addFlashAttribute("success", mensajeFlash);
-        return "redirect:home";
+        return "redirect:/home";
+
     }
 
     @Secured("ADMIN")
@@ -128,8 +129,8 @@ public class IndexController{
             Post post=postService.findOne(id);
             postService.delete(id);
             flash.addFlashAttribute("success", "Cliente eliminado con éxito!!");
-            if (uploadFileService.delete(post.getImg())) {
-                flash.addFlashAttribute("info", "Foto: "+post.getImg()+" eliminada con exito!!");
+            if (uploadFileService.delete(post.getFoto())) {
+                flash.addFlashAttribute("info", "Foto: "+post.getFoto()+" eliminada con exito!!");
             }
         }
         return "redirect:/home";
