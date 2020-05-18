@@ -21,7 +21,7 @@
 						    <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 				        </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Apellido</label>
+                            <label class="col-sm-2 col-form-label">Github</label>
                             <div class="col-sm-6">
                                 <input type="text" th:field="*{github}" class="form-control"  th:errorclass="'form-control alert-danger'"/>
                             </div>
@@ -29,7 +29,7 @@
 
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Email</label>
+                            <label class="col-sm-2 col-form-label">Url</label>
                             <div class="col-sm-6">
                                 <input type="text" th:field="*{url}" class="form-control"  th:errorclass="'form-control alert-danger'"/>
                             </div>
@@ -37,7 +37,7 @@
 
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">descripcion</label>
+                            <label class="col-sm-2 col-form-label">Descripcion</label>
                             <div class="col-sm-6">
                                 <input type="text" th:field="*{descripcion}" class="form-control"  th:errorclass="'form-control alert-danger'"/>
                             </div>
@@ -52,7 +52,7 @@
                             <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
                         </div>
                         <div class="from-group row">
-                            <label for="file" class="col-sm-2 col-form-label">Foto</label>
+                            <label for="file" class="col-sm-2 col-form-label">Imagen</label>
                             <div class="col-sm-6">
                                 <input type="file" name="file" class="form-control"/>
                             </div>

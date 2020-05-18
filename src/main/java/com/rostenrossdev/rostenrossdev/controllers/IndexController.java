@@ -1,7 +1,7 @@
 package com.rostenrossdev.rostenrossdev.controllers;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.net.MalformedURLException;
 
 import javax.validation.Valid;
 
@@ -11,9 +11,12 @@ import com.rostenrossdev.rostenrossdev.models.service.IUploadFileService;
 import com.rostenrossdev.rostenrossdev.util.PageRender;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +40,20 @@ public class IndexController{
      @Autowired
     private IUploadFileService uploadFileService;
 
+
+    @GetMapping(value="/uploads/{filename:.+}")
+    public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
+
+        Resource recurso=null;
+        try {
+            recurso = uploadFileService.load(filename);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+recurso.getFilename()+"\"")
+                .body(recurso);
+    }
     
     @GetMapping("/home")
     public String index(@RequestParam(name = "page", defaultValue = "0") int page, Model model){
@@ -136,21 +153,4 @@ public class IndexController{
         return "redirect:/home";
     }
 
-   /* private boolean hasRole(String role){
-        SecurityContext context= SecurityContextHolder.getContext();
-        
-        if (context ==null) {
-            return false;
-        }
-        Authentication auth = context.getAuthentication();
-        if (auth == null) {
-            return false;
-        }
-
-        Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
-
-        return authorities.contains(new SimpleGrantedAuthority(role));
-        
-    }
-    */
 }
