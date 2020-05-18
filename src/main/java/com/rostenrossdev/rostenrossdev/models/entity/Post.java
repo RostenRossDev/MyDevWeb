@@ -39,7 +39,6 @@ public class Post implements Serializable {
     @NotEmpty
     private String descripcion;
 
-    @NotEmpty
     private String foto;
 
     @NotNull

@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="www.thymeleaf.org">
+
 <head th:replace="layout/layout :: head">
-    
+
 </head>
+
 <body>
-    <header th:replace="layout/layout :: header"></header>
-    
-        <div class="alert alert-danger" th:if="${posts != null}" th:text="${posts}" >
-        </div>
+	<header th:replace="layout/layout :: header"></header>
 
-    <!--<div class="container">
-        <p> Mi nombre es Néstor Matías Costantini, soy Desarrollador Web auto didacta, actualmente estudiante 
-        en la Universidad Tecnologica Nacional "UTN"  de la carrera Tecnicatura Universitaria en 
-        Programacion "TUP" y tambien Profesor de Química del nivel secundario.</p>
-        <p> Me encanta la programación, me introduje en html, css y un poco de js de manera autodidacta
-        luego de recibirme de profesor, ese mismo año comence a cursar un plan nacional argenitno llamado
-        "111Mil Programadores", ahi conoci a 3 profesores, los cuales me motivaron a seguir los estudios formales
-        de la carrera.</p>
-        <p>En este sitio web vas a conocer un poco sobre mi y sobre los proyectos que voy a ir subiendo,
-        dichos proyectos pueden ser en java utilizando spring framework, angular.</p>
-        <p>En el momento en el que comence a desarrllorar esta web y otros proyectos fue durante la emergencia 
-        sanitaria producto de la pandemia por el Cov-Id19, debido solo poseo una notebook que no tiene espacio 
-        en disco para instalar las apps para el desarrollo asi que me las ingenie para desarrollar usando una IDE
-        online la cual es <a href="gitpod.io">gitpod.io</a>, una base de datos MySQL remota gratuita para probar los poryectos
-        la cual es <a href="remotemysql.com">remotemysql.com</a></p>
-    </div>-->
-    
+	<div class="alert alert-danger" th:if="${posts != null}" th:text="${posts}">
+	</div>
 
-    <footer th:replace="layout/layout :: footer"></footer>
+	<div class="container py-4">
+		<div class="card" style="width: 18rem;"  th:each="post: ${posts}">
+            <img th:if="${#strings.length(post.foto)>0}" class="img-thumbnail rounded card-img-top" style="max-width: 25%;" th:src="@{'/uploads/'+${post.foto}}" th:alt="${post.foto}"/>
+			<div class="card-body">
+				<h5 class="card-title" th:text="${post.nombre}"></h5>
+				<p class="card-text" th:text="${post.desripcion}"></p>
+				<p class="card-text" th:text="'Github: '+${post.github}"></p>
+				<a href="#" class="btn btn-primary" th:text="${post.url}"></a>
+			</div>
+		</div>
+	</div>
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
+
 </html>
