@@ -52,18 +52,18 @@
 					</li>
 					<ul class="navbar-nav ml-left mx-4">
 						<li class="nav-item mx-1"><a class="btn btn-outline-success"
-								th:href="@{/locale(lang=es_ES)}">ES</a></li>
+								th:href="@{/locale(lang=es_ES)}" th:text="#{text.layout.es}">ES</a></li>
 						<li class="nav-item mx-1"><a class="btn btn-outline-success"
-								th:href="@{/locale(lang=en_US)}">EN</a></li>
+								th:href="@{/locale(lang=en_US)}" th:text="#{text.layout.en}">EN</a></li>
 						<li class="nav-item dropdown show mx-2">
 							<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button"
 								id="dropdownLenguaje" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"><span th:text="#{text.locale.languague}">Languague</span>
+								aria-expanded="false"><span th:text="#{text.locale.language}">Languague</span>
 							</a>
 
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 								<a class="dropdown-item" th:href="@{/locale(lang=es_ES)}"
-									th:text="#{text.locale.es}">ES</a>
+									th:utext="#{text.locale.es}">ES</a>
 								<a class="dropdown-item" th:href="@{/locale(lang=en_US)}"
 									th:text="#{text.locale.en}">EN</a>
 							</div>
@@ -86,10 +86,10 @@
 			, <a href="http://www.thymeleaf.org">Thymeleaf</a> , <a href="remotemysql.com"> Remote MySQL Data Base</a>
 			and <a href="gitpod.io"> IDE online</a> to develop.
 		</p>
-		<p>
+		<p th:utext="#{text.layout.footer.boody}">
 			Este proyecto fue desarrollado en IDE online de gitpod.io + Spring Boot + base de datos remota,
 			Desarrollador Néstor Matías Costantini.
-			<br/> &copy; Company 2020, Inc. Todos los derechos reservados. <br/>
+			<br th:utext="#{text.layout.footer.boody.right}"> &copy; Company 2020, Inc. Todos los derechos reservados.<br/>
         </p>
 			<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 			<script th:src="@{/js/popper.min.js}"></script>
