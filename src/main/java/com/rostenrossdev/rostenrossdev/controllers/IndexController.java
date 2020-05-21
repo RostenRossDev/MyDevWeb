@@ -41,7 +41,7 @@ public class IndexController{
     private IUploadFileService uploadFileService;
 
 
-    @GetMapping(value="/uploads/{filename:.+}")
+    @GetMapping(value={"/uploads/{filename:.+}"})
     public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
 
         Resource recurso=null;
@@ -55,6 +55,7 @@ public class IndexController{
                 .body(recurso);
     }
     
+
     @GetMapping("/home")
     public String index(@RequestParam(name = "page", defaultValue = "0") int page, Model model){
         Pageable pageRequest = PageRequest.of(page, 4);
@@ -153,4 +154,9 @@ public class IndexController{
         return "redirect:/home";
     }
 
+    @GetMapping("/about")
+    public String us(){
+
+        return "about";
+    }
 }

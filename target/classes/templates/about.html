@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+
+</head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="card mb-3" style="max-width: 1300px;">
+		<div class="row no-gutters">
+			<div class="col-md-2">
+				<img th:src="@{/images/coding.jpg}" class="card-img" alt="coding...">
+				<img th:src="@{/images/coding.jpg}" class="card-img" alt="coding...">
+            </div>
+				<div class="col-md-10">
+					<div class="card-body">
+						<h5 class="card-title" th:text="#{text.about.wellcome}">Bienvenidos</h5>
+						<p class="card-text" th:utext="#{text.about.presentation}">Me llamo Costantini N&eacute;
+							Mat&iacute;as y soy desarrollador web fullstack.</p>
+						<p class="card-text" th:utext="#{text.about.decripcion}"></p>
+                        <p th:text="#{text.about.knowledges}"></p>
+						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item" ></li>
+						<li class="list-group-item" >
+                            <p th:text="#{text.about.contact}"></p>
+                            <p th:utext="#{text.about.phone}"></p>
+                            <p th:utext="#{text.about.email}"></p>
+                            <p th:utext="#{text.about.github}"></p>
+                        </li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>
