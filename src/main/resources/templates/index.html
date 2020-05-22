@@ -5,24 +5,31 @@
 
 </head>
 
-<body>
+<body class="bg-secondary">
 	<header th:replace="layout/layout :: header"></header>
 
 	<div class="alert alert-danger" th:if="${posts != null}" th:text="${posts}"></div>
 
 	<div class="container py-4" >
                 
-		<div class="card" style="width: 18rem;"  th:each="post: ${postLista}">
+		<div class="card " style="width: 18rem;"  th:each="post: ${postLista}" th:onclick="'window.location.href = \'' + @{/ver/{id}(id=${post.id})} + '\''"
+>
             <img th:if="${#strings.length(post.foto)>0}"  th:src="@{'/uploads/'+${post.foto}}" 
             th:alt="${post.foto}" class="img-thumbnail rounded card-img-top " />
-			<div class="card-body">
-				<h5 class="card-title" th:if="${idioma == 'es'}" th:text="${post.nombre}"></h5>
-                <h5 class="card-title" th:if="${idioma == 'en'}" th:tet="${post.nombreIngles}"></h5>
-				<p class="card-text" th:if="${idioma == 'es'}" th:text="${post.descripcion}"></p>
-                <p class="card-text"  th:if="${idioma == 'en'}" th:text="${post.descripcionIngles}"></p>
+			<div class="card-body ">
+				<h5 class="card-title" th:if="${idioma} =='es'" th:text="${post.nombre}"></h5>
+                <h5 class="card-title" th:if="${idioma} =='en'" th:text="${post.nombreIngles}"></h5>
 				<p class="card-text" th:text="'Github: '+${post.github}"></p>
-				<a href="#" class="btn btn-primary" th:text="${post.url}"></a>
+				<a href="#" class="btn btn-success" th:text="${post.url}"></a>
                 <p class="text-muted card-text" th:text="${post.fecha}"></p>
+                <ul class="navbar-nav flex-row">
+					<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active col-5">
+						<a class="nav-link  btn btn-outline-primary btn-xs" th:href="@{/form/{id}}" th:text="#{text.index.edit}">Editar <span class="sr-only">(current)</span></a>
+					</li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item col-5">
+						<a class="nav-link btn btn-outline-warning btn-xs" th:href="@{/eliminar/{id}}" th:text="#{text.index.delete}">Eliminar</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

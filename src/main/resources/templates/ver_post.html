@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
+<head th:replace="layout/layout :: head">
+   
+</head>
+<body>
+    <header th:replace="layout/layout :: header"></header>
+
+   <div class="card " style="width: 25rem;">
+            <img th:if="${#strings.length(post.foto)>0}"  th:src="@{'/uploads/'+${post.foto}}" 
+            th:alt="${post.foto}" class="img-thumbnail rounded card-img-top " />
+			<div class="card-body ">
+				<h5 class="card-title" th:if="${idioma} =='es'" th:text="${post.nombre}"></h5>
+                <h5 class="card-title" th:if="${idioma} =='en'" th:text="${post.nombreIngles}"></h5>
+				<p class="card-text" th:if="${idioma} =='es'" th:text="'Descripción: '+${post.descripcion}"></p>
+                <p class="card-text"  th:if="${idioma} =='en'" th:text="'Description: '+${post.descripcionIngles}"></p>
+				<p class="card-text" th:text="'Github: '+${post.github}"></p>
+				<a href="#" class="btn btn-success" th:text="${post.url}"></a>
+                <p class="text-muted card-text" th:text="${post.fecha}"></p>
+			</div>
+		</div>
+
+    <footer th:replace="layout/layout :: footer"></footer>
+    
+</body>
+</html>

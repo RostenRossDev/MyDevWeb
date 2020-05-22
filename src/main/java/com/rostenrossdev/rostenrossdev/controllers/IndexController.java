@@ -69,7 +69,7 @@ public class IndexController{
             String idioma;
             idioma= localeResolver.resolveLocale(request).getLanguage();
 
-            model.addAttribute("info", idioma);
+            model.addAttribute("idioma", idioma);
             model.addAttribute("postLista", postLista);            
             model.addAttribute("page", pageRender);            
         }
@@ -142,7 +142,7 @@ public class IndexController{
         }
         model.addAttribute("cliente", post);
         model.addAttribute("titulo", "Formulario de Cliente");
-        return "form";
+        return "form_post";
     }
 
     @Secured("ADMIN")
@@ -163,5 +163,23 @@ public class IndexController{
     public String us(){
 
         return "about";
+    }
+
+    @GetMapping ("/ver/{id}")
+    public String ver(@PathVariable(value="id") Long id, Model model, RedirectAttributes flash, SessionLocaleResolver localeResolver, HttpServletRequest request){
+
+        Post post = postService.findOne(id);
+        if (post==null) {
+            flash.addFlashAttribute("error", "El post no existe en la base de datos!!");
+            return "redirect:/home";
+        }
+
+        String idioma;
+        idioma= localeResolver.resolveLocale(request).getLanguage();
+
+        model.addAttribute("idioma", idioma);
+        model.addAttribute("post", post);
+
+        return "ver_post";
     }
 }
