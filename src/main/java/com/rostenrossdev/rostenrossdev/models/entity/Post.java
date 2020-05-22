@@ -31,6 +31,10 @@ public class Post implements Serializable {
     private String nombre;
 
     @NotEmpty
+    @Column(name = "nombre_ingles")
+    private String nombreIngles;
+
+    @NotEmpty
     private String github;
 
     @NotEmpty
@@ -38,6 +42,10 @@ public class Post implements Serializable {
 
     @NotEmpty
     private String descripcion;
+
+    @NotEmpty
+    @Column(name = "descripcion_ingles")
+    private String descripcionIngles;
 
     private String foto;
 
@@ -103,6 +111,22 @@ public class Post implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNombreIngles() {
+        return nombreIngles;
+    }
+
+    public void setNombreIngles(String nombreIngles) {
+        this.nombreIngles = nombreIngles;
+    }
+
+    public String getDescripcionIngles() {
+        return descripcionIngles;
+    }
+
+    public void setDescripcionIngles(String descripcionIngles) {
+        this.descripcionIngles = descripcionIngles;
     }
     
     

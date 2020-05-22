@@ -20,6 +20,15 @@
                             </div>
 						    <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 				        </div>
+
+                        <div class="form-group row">
+							<label class="col-sm-2 col-form-label">Nombre Ingles</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{nombreIngles}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                            </div>
+						    <small class="form-text text-danger" th:if="${#fields.hasErrors('nombreIngles')}" th:errors="*{nombreIngles}"></small>
+				        </div>
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Github</label>
                             <div class="col-sm-6">
@@ -44,10 +53,20 @@
                             <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
 
                         </div>
+
+                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Descripcion Ingles</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{descripcionIngles}" class="form-control"  th:errorclass="'form-control alert-danger'"/>
+                            </div>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcionIngles')}" th:errors="*{descripcionIngles}"></small>
+
+                        </div>
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Fecha</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" th:field="*{fecha}"  th:errorclass="'form-control alert-danger'"/>
+                                <input type="text" class="form-control" th:field="*{fecha}"  th:errorclass="'form-control alert-danger'" placeholder="YYYY-mm-dd"/>
                             </div>
                             <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
                         </div>

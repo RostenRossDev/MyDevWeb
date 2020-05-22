@@ -3,6 +3,7 @@ package com.rostenrossdev.rostenrossdev.controllers;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.rostenrossdev.rostenrossdev.models.entity.Post;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -54,17 +56,20 @@ public class IndexController{
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+recurso.getFilename()+"\"")
                 .body(recurso);
     }
-    
+
 
     @GetMapping("/home")
-    public String index(@RequestParam(name = "page", defaultValue = "0") int page, Model model){
+    public String index(@RequestParam(name = "page", defaultValue = "0") int page, Model model, SessionLocaleResolver localeResolver, HttpServletRequest request ){
         Pageable pageRequest = PageRequest.of(page, 4);
         Page<Post> postLista = postService.findAll(pageRequest);
         PageRender<Post> pageRender = new PageRender<>("/home", postLista);
         if (postLista.isEmpty()) {
             model.addAttribute("posts","Por el momento no hay ningun proyecto para mostrar!!");
-        }else {
-            model.addAttribute("posts","Hay proyectos para mostrar!!");
+            }else {
+            String idioma;
+            idioma= localeResolver.resolveLocale(request).getLanguage();
+
+            model.addAttribute("info", idioma);
             model.addAttribute("postLista", postLista);            
             model.addAttribute("page", pageRender);            
         }
