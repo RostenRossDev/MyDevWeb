@@ -31,6 +31,7 @@ public class IPostServiceImpl implements IPostService {
     }
 
     @Override
+    @Transactional
     public void save(Post post) {
 
         postDao.save(post);
@@ -44,6 +45,7 @@ public class IPostServiceImpl implements IPostService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         // TODO Auto-generated method stub
         postDao.deleteById(id);

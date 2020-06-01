@@ -84,7 +84,7 @@ public class IndexController{
     }
 
     @Secured("ADMIN")
-    @PostMapping("/guardarPost")
+    @PostMapping("/form")
     public String guardarPost(@Valid Post post, @RequestParam("file") MultipartFile foto,
          Model model,  RedirectAttributes flash, BindingResult result, SessionStatus status){
 

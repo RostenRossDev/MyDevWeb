@@ -6,19 +6,30 @@
 <body>
     <header th:replace="layout/layout :: header"></header>
     <main>
-        <div class="card " style="width: 25rem;">
-            <img th:if="${#strings.length(post.foto)>0}"  th:src="@{'/uploads/'+${post.foto}}" 
-            th:alt="${post.foto}" class="img-thumbnail rounded card-img-top " />
-			<div class="card-body ">
-				<h5 class="card-title" th:if="${idioma} =='es'" th:text="${post.nombre}"></h5>
-                <h5 class="card-title" th:if="${idioma} =='en'" th:text="${post.nombreIngles}"></h5>
-				<p class="card-text" th:if="${idioma} =='es'" th:text="'Descripción: '+${post.descripcion}"></p>
-                <p class="card-text"  th:if="${idioma} =='en'" th:text="'Description: '+${post.descripcionIngles}"></p>
-				<p class="card-text" th:text="'Github: '+${post.github}"></p>
-				<a href="#" class="btn btn-success" th:text="${post.url}"></a>
-                <p class="text-muted card-text" th:text="${post.fecha}"></p>
-			</div>
-		</div>
+    <div class="card mb-3">
+            <div class="card ">
+                <div class="row no-gutters">
+                    <div class="col-md-4" style="width: 25rem;">
+
+                        <img th:if="${#strings.length(post.foto)>0}"  th:src="@{'/uploads/'+${post.foto}}" 
+                        th:alt="${post.foto}" class="img-thumbnail rounded card-img-top " />
+                    </div>
+            
+                    <div class=" card col-md-8">
+                        <div class="card-body ">
+                            <h5 class="card-title" th:if="${idioma} =='es'" th:text="${post.nombre}"></h5>
+                            <h5 class="card-title" th:if="${idioma} =='en'" th:text="${post.nombreIngles}"></h5>
+                            <p class="card-text" th:if="${idioma} =='es'" th:text="'Descripción: '+${post.descripcion}"></p>
+                            <p class="card-text"  th:if="${idioma} =='en'" th:text="'Description: '+${post.descripcionIngles}"></p>
+                            <p class="card-text" th:text="'Github: '+${post.github}"></p>
+                            <a href="#" class="btn btn-success" th:text="${post.url}"></a>
+                        </div>
+
+                        <div class="card-footer " ><small class="text-muted card-text" th:text="${post.fecha}"></small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer th:replace="layout/layout :: footer"></footer>
     

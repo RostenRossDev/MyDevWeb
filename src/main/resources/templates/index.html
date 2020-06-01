@@ -12,10 +12,9 @@
 
 	<div class="container py-3" >
         <div class="row">
-		<div class="card ml-2 col-sm-12 col-md-3" style="width: 18rem;"  th:each="post: ${postLista}" th:onclick="'window.location.href = \'' + @{/ver/{id}(id=${post.id})} + '\''"
->
+		<div class="card ml-2 col-sm-12 col-md-3" style="width: 18rem;"  th:each="post: ${postLista}">
             <img th:if="${post.foto != null}"  th:src="@{'/uploads/'+${post.foto}}" 
-            th:alt="${post.foto}" class="img-thumbnail rounded card-img-top " />
+            th:alt="${post.foto}" class="img-thumbnail rounded card-img-top " style="cursor: pointer;"  th:onclick="'window.location.href = \'' + @{/ver/{id}(id=${post.id})} + '\''" />
            
 			<div class="card-body ">
 				<h5 class="card-title" th:if="${idioma} =='es'" th:text="${post.nombre}"></h5>

@@ -11,7 +11,7 @@
 		<div class="card bg-dark text-white">
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
-				<form th:action="@{/guardarPost}" th:object="${post}" method="post" enctype="multipart/form-data">
+				<form th:action="@{/form}" th:object="${post}" method="post" enctype="multipart/form-data">
 					<table class="table table-bordered">
 						<div class="form-group row">
 							<label class="col-sm-2 col-form-label">Nombre</label>
@@ -83,7 +83,7 @@
                         </div>
 
                     </table>
-                    <td><input  type="hidden" th:field="*{id}"/></td>
+                    <td><input type="hidden" th:field="*{id}"/></td>
                 </form>
             </div>
 
