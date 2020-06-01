@@ -5,8 +5,8 @@
 </head>
 <body>
     <header th:replace="layout/layout :: header"></header>
-
-   <div class="card " style="width: 25rem;">
+    <main>
+        <div class="card " style="width: 25rem;">
             <img th:if="${#strings.length(post.foto)>0}"  th:src="@{'/uploads/'+${post.foto}}" 
             th:alt="${post.foto}" class="img-thumbnail rounded card-img-top " />
 			<div class="card-body ">
@@ -19,7 +19,7 @@
                 <p class="text-muted card-text" th:text="${post.fecha}"></p>
 			</div>
 		</div>
-
+    </main>
     <footer th:replace="layout/layout :: footer"></footer>
     
 </body>

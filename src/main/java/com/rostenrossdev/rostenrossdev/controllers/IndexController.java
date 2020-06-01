@@ -140,7 +140,7 @@ public class IndexController{
             flash.addFlashAttribute("error","El ID del post no puede ser cero!!");
             return "redirect:/home";
         }
-        model.addAttribute("cliente", post);
+        model.addAttribute("post", post);
         model.addAttribute("titulo", "Formulario de Cliente");
         return "form_post";
     }
